@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ToDo from './ToDo'; 
 
-const initialToDoContent = [ {Name: '', Description: '', statusCode: ''} ];
+const initialToDoContent = [ ];
 
 function MyToDo() {
   const [toDoContent, setToDoContent] = useState(initialToDoContent);
