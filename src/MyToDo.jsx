@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import ToDo from './ToDo'; 
 
-const initialToDoContent = [
-];
+const initialToDoContent = [ {Name: '', Description: '', statusCode: ''} ];
 
 function MyToDo() {
   const [toDoContent, setToDoContent] = useState(initialToDoContent);
@@ -44,29 +43,27 @@ function MyToDo() {
     setEditToDo({ Name: '', Description: '', statusCode: '' });
   };
 
-  const filteredToDoContent = statusFilter === 'All' 
-    ? toDoContent 
+  const filteredToDoContent = statusFilter === 'All'
+    ? toDoContent
     : toDoContent.filter(toDo => toDo.statusCode === statusFilter);
 
   return (
     <>
-       <ToDo addToDo={addToDo} />
+      <ToDo addToDo={addToDo} />
 
-      <h4>My Todo 
-        <span style={{float: 'right', textAlign: 'end'}}>
-          Status filter:
-          <select
-            style={{marginLeft: '3px', height: '20px',}}
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-          >
-            <option value="All">All</option>
-            <option value="Completed">Completed</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Yet to start">Yet to start</option>
-            <option value="On Hold">On Hold</option>
-          </select>
-        </span> 
+      <h4>My Todo <span style={{ float: 'right', textAlign: 'end' }}>
+        Status filter:<select
+          style={{ marginLeft: '3px', height: '20px' }}
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+        >
+          <option value="All">All</option>
+          <option value="Completed">Completed</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Yet to start">Yet to start</option>
+          <option value="On Hold">On Hold</option>
+        </select>
+      </span>
       </h4>
       <div className="container">
         {filteredToDoContent.map((val, index) => (
@@ -105,11 +102,11 @@ function MyToDo() {
               <>
                 <p style={{ color: 'black', margin: '5px' }}><b>Name: </b>{val.Name}</p>
                 <p style={{ color: 'black', margin: '5px' }}><b>Description: </b> {val.Description}</p>
-                <p style={{ color: 'black', margin: '5px'}}><b>Status: </b>{val.statusCode}</p>
+                <p style={{ color: 'black', margin: '5px' }}><b>Status: </b>{val.statusCode}</p>
                 <p>
                   <button onClick={() => startEditing(index)} style={{ margin: '1em', background: '#00ab41' }}>Edit</button>
-                  <button 
-                    style={{ background: '#A24857' }} 
+                  <button
+                    style={{ background: '#A24857' }}
                     onClick={() => deleteToDo(index)}
                   >
                     Delete

@@ -18,6 +18,9 @@ function ToDo({ addToDo }) {
             setDescription('');
             setStatusCode('');
         }
+        else {
+            alert('Please fill all fields');
+        }
     };
 
     return (
